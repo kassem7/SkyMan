@@ -18,12 +18,12 @@
   <script>
     // التحقق من أن المستخدم مسجل دخول
     if (localStorage.getItem("loggedIn") !== "true") {
-      location.href = "login.html";
+      location.href = "index.html";
     }
 
     function logout() {
       localStorage.removeItem("loggedIn");
-      location.href = "login.html";
+      location.href = "index.html";
     }
   </script>
 </body>
