@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>لوحة تحكم الميكروتك</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      direction: rtl;
+      padding: 20px;
+      background: #f7f9fa;
+    }
+    h2 {
+      margin-bottom: 10px;
+    }
+    .controls {
+      margin-bottom: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+    .counts span {
+      margin-inline-end: 12px;
+      font-weight: bold;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    th, td {
+      padding: 10px;
+      border: 1px solid #ddd;
+      text-align: center;
+    }
+    th {
+      background: #e6f0f5;
+    }
+    .renew-modal {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+    .renew-modal .modal-content {
+      background: white;
+      padding: 20px;
+      border-radius: 6px;
+      text-align: center;
+      min-width: 260px;
+    }
+    .renew-modal button {
+      margin: 5px;
+      padding: 6px 12px;
+      cursor: pointer;
+    }
+    select {
+      padding: 4px;
+    }
+  </style>
+</head>
+<body>
+  <h2>لوحة تحكم الميكروتك</h2>
+  
+  
+<!-- زر الرجوع -->
+<button onclick="goBack()" style="
+  position: fixed;
+  top: 6px; left: 10px;
+  padding: 10px 16px; font-size: 15px;
+  background-color: #2196f3; color: white;
+  border: none; border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  cursor: pointer; z-index: 9999;
+">⬅️ رجوع</button>
+
+<script>
+  function goBack() {
+    // بدلاً من history.back نعيد التوجيه لصفحة الإدارة
+    window.location.href = 'login.html';
+  }
+</script>
+  <div class="controls">
+    <label>🔍 فلترة حسب الحالة:
+      <select id="statusFilter">
+        <option value="الكل">الكل</option>
+        <option value="مفعل">✅ مفعل</option>
+        <option value="منتهي">🟡 منتهي</option>
+        <option value="غير مستخدم">🔵 غير مستخدم</option>
+        <option value="معطل">❌ معطل</option>
+      </select>
+    </label>
+    <button id="refreshBtn">🔄 تحديث الكروت</button>
+    <div class="counts">
+      <span>📊 الكل: <span id="countAll">0</span></span>
+      <span>✅ مفعل: <span id="countActive">0</span></span>
+      <span>🟡 منتهي: <span id="countExpired">0</span></span>
+      <span>🔵 غير مستخدم: <span id="countUnused">0</span></span>
+      <span>❌ معطل: <span id="countDisabled">0</span></span>
+      <span>💾 استخدام: <span id="totalUsed">0</span> جيجا</span>
+    </div>
+  </div>
+  
+<div style="margin-bottom: 15px; text-align: center;">
+  <input type="text" id="searchInput" placeholder="🔍 ابحث عن اسم المستخدم" style="padding: 8px; width: 250px; border-radius: 5px; border: 1px solid #ccc;">
+</div>
+  
+  <table id="usersTable">
+    <thead>
+      <tr>
+        <th>الإجراء</th>
+        <th>الحالة</th>
+        <th>المتبقي (GB)</th>
+        <th>الاستهلاك (GB)</th>
+        <th>الحجم الكلي (GB)</th>
+        <th>اسم المستخدم</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script src="scripts/dashboard.js"></script>
+</body>
+</html>

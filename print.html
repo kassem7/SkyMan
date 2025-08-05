@@ -1,0 +1,95 @@
+<!--!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<html>
+<head>
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+</head>
+<body>
+  <div id="multiForm" class="card-form hidden">
+      <p>🚧 هذه الميزة تحت التطوير...</p>
+    </div>
+</body>
+</html-->
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>إضافة كرت هوتسبوت</title>
+  <link rel="stylesheet" href="styles/add_user_mik.css">
+</head>
+<body>
+  <div class="container">
+    <h2>➕ إضافة كرت هوتسبوت</h2>
+
+    <div class="tabs">
+      <button id="singleTab" class="active" onclick="showForm('single')">إضافة بطاقة واحدة</button>
+      <button id="multiTab" onclick="showForm('multi')">إضافة عدة بطاقات</button>
+    </div>
+
+    <!-- نموذج بطاقة واحدة -->
+    <form id="singleForm" class="card-form">
+      <select id="cardType">
+        <option value="usernameonly">اسم مستخدم فقط</option>
+        <option value="usersampass">اسم مستخدم وكلمة مرور مشابهه</option>
+        <option value="userandpass">اسم مستخدم وكلمة مرور مختلفه </option> 
+      </select>
+      <label>👤 اسم المستخدم</label>
+      <input type="text" id="username" required>
+
+      <!--label>🔐 كلمة المرور</label>
+      <input type="text" id="password"-->
+
+      <label>📅 الصلاحية (أيام)</label>
+      <input type="number" id="validity" value="30">
+
+      <label>📦 الحجم (جيجا)</label>
+      <input type="number" id="limit" placeholder="اتركه فارغًا إذا لا يوجد حد">
+
+      <label>🚀 ملف السرعة</label>
+      <select id="profile">
+        <option value="default">default</option>
+      </select>
+
+      <label>📝 ملاحظة</label>
+      <input type="text" id="note" placeholder="اختياري">
+
+      <label>💰 السعر</label>
+      <input type="text" id="price" placeholder="اختياري">
+
+      <label>📍 نقطة البيع</label>
+      <input type="text" id="seller" placeholder="اختياري">
+
+      <label class="switch-label">
+        <input type="checkbox" id="bindOnFirst">
+        ربط عند أول استخدام
+      </label>
+
+      <button type="button" onclick="addSingleCard()">➕ إضافة</button>
+    </form>
+
+    <!-- نموذج عدة بطاقات -->
+    <div id="multiForm" class="card-form hidden">
+      <p>🚧 هذه الميزة تحت التطوير...</p>
+    </div>
+
+    <hr style="margin: 30px 0;">
+    <h3>🔎 البحث في الكروت المضافة</h3>
+    <input type="text" id="searchInput" placeholder="ابحث باسم المستخدم..." oninput="filterTable()">
+
+    <table id="cardsTable">
+      <thead>
+        <tr>
+          <th>اسم المستخدم</th>
+          <th>الصلاحية</th>
+          <th>السعر</th>
+          <th>ملاحظة</th>
+          <th>📆 تاريخ الإضافة</th>
+        </tr>
+      </thead>
+      <tbody id="cardsTableBody"></tbody>
+    </table>
+  </div>
+
+  <script src="scripts/add_user_mik.js"></script>
+</body>
+</html>
